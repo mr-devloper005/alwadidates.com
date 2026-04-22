@@ -1,93 +1,144 @@
-import Link from "next/link";
-import { PageShell } from "@/components/shared/page-shell";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { mockTeamMembers } from "@/data/mock-data";
-import { SITE_CONFIG } from "@/lib/site-config";
+import Link from "next/link"
+import { ArrowRight, Compass, Shield, Sparkles, Target } from "lucide-react"
+import { NavbarShell } from "@/components/shared/navbar-shell"
+import { Footer } from "@/components/shared/footer"
+import { SbmBrandLogo } from "@/components/sbm-profile/sbm-brand-logo"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { mockTeamMembers } from "@/data/mock-data"
+import { SITE_CONFIG } from "@/lib/site-config"
 
-const highlights = [
-  { label: "Creators onboarded", value: "12k+" },
-  { label: "Bookmarks shared", value: "180k" },
-  { label: "Listings published", value: "8.6k" },
-];
+const stats = [
+  { label: "Profile projects shipped", value: "2.4k+" },
+  { label: "Return visits to public pages", value: "38%" },
+  { label: "Avg. time to go live", value: "< 1 day" },
+]
 
-const values = [
-  { title: "Curated by people", description: "We believe trusted recommendations beat endless feeds." },
-  { title: "Designed for focus", description: "Clear, calm UI helps you find the next best resource fast." },
-  { title: "Built to share", description: "Collections make collaboration and knowledge flow effortless." },
-];
+const principles = [
+  {
+    title: "Clarity over noise",
+    body: "A profile should answer who you are, what you do, and how to take the next step—without burying that under feeds or ads.",
+    icon: Target,
+  },
+  {
+    title: "Trust you can see",
+    body: "Verification cues, structured fields, and a layout that looks intentional, not like a default template.",
+    icon: Shield,
+  },
+  {
+    title: "Room to grow",
+    body: "As your role or business evolves, your SBM Profile can stretch with you: new proof points, links, and story—same URL.",
+    icon: Compass,
+  },
+]
 
 export default function AboutPage() {
   return (
-    <PageShell
-      title={`About ${SITE_CONFIG.name}`}
-      description={`${SITE_CONFIG.name} is a modern platform for creators, communities, and curated business discovery.`}
-      actions={
-        <>
-          <Button variant="outline" asChild>
-            <Link href="/team">Meet the Team</Link>
-          </Button>
-          <Button asChild>
-            <Link href="/contact">Contact Us</Link>
-          </Button>
-        </>
-      }
-    >
-      <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-        <Card className="border-border bg-card">
-          <CardContent className="space-y-4 p-6">
-            <Badge variant="secondary">Our Story</Badge>
-            <h2 className="text-2xl font-semibold text-foreground">
-              A single home for knowledge, discovery, and community.
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              {SITE_CONFIG.name} brings together publishing, listings, and social bookmarking so teams can move faster
-              and keep their best resources close.
+    <div className="min-h-screen bg-white text-zinc-950">
+      <NavbarShell />
+      <main>
+        <section className="relative overflow-hidden bg-black text-white">
+          <div
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-48 bg-[linear-gradient(90deg,rgba(56,189,248,0.1)_0%,rgba(191,255,0,0.12)_50%,rgba(34,197,94,0.08)_100%)] blur-2xl"
+            aria-hidden
+          />
+          <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
+            <div className="max-w-3xl">
+              <SbmBrandLogo className="text-white" size="lg" />
+              <p className="mt-8 text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">About SBM Profile</p>
+              <h1 className="mt-4 text-4xl font-bold leading-[1.08] tracking-[-0.04em] sm:text-5xl md:text-6xl">
+                A public profile you are proud to put in a signature.
+              </h1>
+              <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-400">
+                {SITE_CONFIG.name} is focused on the SBM Profile experience: one credible surface for people and teams
+                who need to look sharp in email, chat, and the first page someone opens after a referral.
+              </p>
+              <div className="mt-10 flex flex-wrap gap-4">
+                <Link
+                  href="/create/profile"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#BFFF00] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#d4ff4d]"
+                >
+                  Open profile setup
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+                >
+                  Talk to us
+                </Link>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="border-b border-zinc-200 bg-zinc-50">
+          <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 sm:grid-cols-3 sm:px-6 lg:px-8">
+            {stats.map((s) => (
+              <div key={s.label} className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm">
+                <p className="text-3xl font-bold tracking-[-0.03em] text-zinc-950 sm:text-4xl">{s.value}</p>
+                <p className="mt-2 text-sm text-zinc-600">{s.label}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
+          <div className="max-w-2xl">
+            <span className="inline-flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-600">
+              <Sparkles className="h-3.5 w-3.5" />
+              Principles
+            </span>
+            <h2 className="mt-4 text-3xl font-bold tracking-[-0.03em] sm:text-4xl">What we optimize for</h2>
+            <p className="mt-3 text-sm leading-7 text-zinc-600">
+              SBM Profile is not a business directory, not a social feed, and not a file dump. It is a deliberate answer
+              to: “What should people see first when they look you up?”
             </p>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {highlights.map((item) => (
-                <div key={item.label} className="rounded-lg border border-border bg-secondary/40 p-4">
-                  <div className="text-2xl font-semibold text-foreground">{item.value}</div>
-                  <div className="text-xs text-muted-foreground">{item.label}</div>
+          </div>
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {principles.map((p) => (
+              <div
+                key={p.title}
+                className="rounded-2xl border border-zinc-200 bg-zinc-50/80 p-6 transition hover:border-zinc-300"
+              >
+                <p.icon className="h-6 w-6 text-zinc-900" strokeWidth={1.5} />
+                <h3 className="mt-4 text-lg font-semibold tracking-[-0.02em]">{p.title}</h3>
+                <p className="mt-2 text-sm leading-7 text-zinc-600">{p.body}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="bg-black py-16 text-white sm:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-bold tracking-[-0.03em] sm:text-3xl">People behind the work</h2>
+            <p className="mt-2 max-w-2xl text-sm leading-7 text-zinc-400">
+              A small, product-minded group helping professionals ship profiles that read as real—not generic.
+            </p>
+            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {mockTeamMembers.map((member) => (
+                <div
+                  key={member.id}
+                  className="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:border-white/20"
+                >
+                  <div className="flex items-center gap-3">
+                    <Avatar className="h-12 w-12 border border-white/20">
+                      <AvatarImage src={member.avatar} alt={member.name} />
+                      <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <p className="font-semibold">{member.name}</p>
+                      <p className="text-xs text-zinc-500">{member.role}</p>
+                    </div>
+                  </div>
+                  <p className="mt-4 text-sm leading-6 text-zinc-400">{member.bio}</p>
+                  <p className="mt-3 text-xs text-zinc-500">{member.location}</p>
                 </div>
               ))}
             </div>
-          </CardContent>
-        </Card>
-        <div className="space-y-4">
-          {values.map((value) => (
-            <Card key={value.title} className="border-border bg-card">
-              <CardContent className="p-6">
-                <h3 className="text-lg font-semibold text-foreground">{value.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{value.description}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      </div>
-
-      <div className="mt-10 grid gap-6 md:grid-cols-3">
-        {mockTeamMembers.map((member) => (
-          <Card key={member.id} className="border-border bg-card transition-transform hover:-translate-y-1">
-            <CardContent className="p-6">
-              <div className="flex items-center gap-3">
-                <Avatar className="h-12 w-12">
-                  <AvatarImage src={member.avatar} alt={member.name} />
-                  <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="text-sm font-semibold text-foreground">{member.name}</p>
-                  <p className="text-xs text-muted-foreground">{member.role}</p>
-                </div>
-              </div>
-              <p className="mt-3 text-sm text-muted-foreground">{member.bio}</p>
-              <p className="mt-3 text-xs text-muted-foreground">{member.location}</p>
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-    </PageShell>
-  );
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  )
 }
