@@ -107,11 +107,11 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-black text-white">
       <NavbarShell />
       <main className="mx-auto w-full max-w-6xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
         <SchemaJsonLd data={breadcrumbData} />
-        <section className="rounded-3xl border border-border/60 bg-white/90 p-8 shadow-sm md:p-12">
+        <section className="rounded-3xl border border-zinc-200 bg-white p-8 text-zinc-900 shadow-sm md:p-12">
           <div className="grid gap-8 md:grid-cols-[200px_1fr] md:items-start">
             <div className="flex justify-center md:justify-start">
               <div className="relative h-36 w-36 overflow-hidden rounded-full border border-border/70 bg-muted">
@@ -125,12 +125,12 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
               </div>
             </div>
             <div>
-              <h1 className="text-3xl font-bold text-foreground sm:text-4xl">{brandName}</h1>
+              <h1 className="text-3xl font-bold text-zinc-900 sm:text-4xl">{brandName}</h1>
               {domain ? (
-                <p className="mt-1 text-sm font-medium text-muted-foreground">{domain}</p>
+                <p className="mt-1 text-sm font-medium text-zinc-600">{domain}</p>
               ) : null}
               <article
-                className="article-content prose prose-slate mt-6 max-w-2xl text-base leading-relaxed prose-p:my-4 prose-a:text-primary prose-a:underline prose-strong:font-semibold"
+                className="article-content prose prose-slate mt-6 max-w-2xl text-base leading-relaxed text-zinc-700 prose-p:my-4 prose-a:text-lime-600 prose-a:underline prose-strong:font-semibold"
                 dangerouslySetInnerHTML={{ __html: descriptionHtml }}
               />
               {website ? (
@@ -149,8 +149,8 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
         {suggestedArticles.length ? (
           <section className="mt-12">
             <div className="flex items-center justify-between">
-              <h2 className="text-xl font-semibold text-foreground">Suggested articles</h2>
-              <Link href="/articles" className="text-sm font-medium text-primary hover:underline">
+              <h2 className="text-xl font-semibold text-white">Suggested articles</h2>
+              <Link href="/articles" className="text-sm font-medium text-[#BFFF00] hover:underline">
                 View all
               </Link>
             </div>
@@ -164,21 +164,21 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
                 />
               ))}
             </div>
-            <nav className="mt-6 rounded-2xl border border-border bg-card/60 p-4">
-              <p className="text-sm font-semibold text-foreground">Related links</p>
+            <nav className="mt-6 rounded-2xl border border-white/10 bg-white/5 p-4">
+              <p className="text-sm font-semibold text-zinc-200">Related links</p>
               <ul className="mt-2 space-y-2 text-sm">
                 {suggestedArticles.slice(0, 3).map((article) => (
                   <li key={`related-${article.id}`}>
                     <Link
                       href={buildPostUrl("article", article.slug)}
-                      className="text-primary underline-offset-4 hover:underline"
+                      className="text-[#BFFF00] underline-offset-4 hover:underline"
                     >
                       {article.title}
                     </Link>
                   </li>
                 ))}
                 <li>
-                  <Link href="/profile" className="text-primary underline-offset-4 hover:underline">
+                  <Link href="/profile" className="text-[#BFFF00] underline-offset-4 hover:underline">
                     Browse all profiles
                   </Link>
                 </li>
