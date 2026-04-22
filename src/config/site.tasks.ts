@@ -45,7 +45,7 @@ export const siteTaskDefinitions = [
     route: '/sbm',
     description: 'Curated bookmarks and resources.',
     contentType: 'social',
-    enabled: true,
+    enabled: false,
   },
   {
     key: 'comment',
