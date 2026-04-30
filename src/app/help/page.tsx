@@ -12,7 +12,7 @@ const topics = [
   },
   {
     title: "Edit & publish",
-    body: "Refine your headline, proof points, and links—then share your SBM profile URL in signatures and intros.",
+    body: "Refine your headline, proof points, and links—then share your Alwadidates profile URL in signatures and intros.",
   },
   {
     title: "Account & data",
@@ -31,7 +31,7 @@ export default function HelpPage() {
             <p className="mt-8 text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">Help center</p>
             <h1 className="mt-3 text-4xl font-bold tracking-[-0.04em] sm:text-5xl">Find answers. Ship your profile.</h1>
             <p className="mt-4 max-w-2xl text-zinc-400 sm:text-lg">
-              Quick guides to registration, your dashboard, and how your SBM profile fits into day-to-day outreach.
+              Quick guides to registration, your dashboard, and how your Alwadidates profile fits into day-to-day outreach.
             </p>
             <Link
               href="/contact"
@@ -54,7 +54,7 @@ export default function HelpPage() {
 
           <div className="mt-12 rounded-[2rem] border border-zinc-200 bg-zinc-50 p-6 sm:p-8">
             <h2 className="text-xl font-bold tracking-[-0.02em]">FAQ</h2>
-            <p className="mt-1 text-sm text-zinc-600">Straight answers to common SBM Profile questions.</p>
+            <p className="mt-1 text-sm text-zinc-600">Straight answers to common Alwadidates questions.</p>
             <Accordion type="single" collapsible className="mt-6 w-full">
               {mockFaqs.map((faq) => (
                 <AccordionItem key={faq.id} value={faq.id} className="border-zinc-200">

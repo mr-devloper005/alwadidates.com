@@ -35,7 +35,7 @@ export function FooterOverride() {
           </nav>
         </div>
         <p className="pt-8 text-center text-xs text-zinc-500 sm:text-left">
-          © {new Date().getFullYear()} SBM Profile · {SITE_CONFIG.name}
+          © {new Date().getFullYear()} Alwadidates · {SITE_CONFIG.name}
         </p>
       </div>
     </footer>
