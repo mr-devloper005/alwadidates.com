@@ -13,14 +13,14 @@ export function HomePageOverride() {
     {
       '@context': 'https://schema.org',
       '@type': 'Organization',
-      name: 'SBM Profile',
+      name: 'Alwadidates',
       url: base,
       logo: `${base}${SITE_CONFIG.defaultOgImage}`,
     },
     {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: 'SBM Profile',
+      name: 'Alwadidates',
       url: base,
     },
   ]

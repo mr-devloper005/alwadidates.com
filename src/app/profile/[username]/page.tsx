@@ -10,6 +10,8 @@ import { buildPostUrl } from "@/lib/task-data";
 import { buildPostMetadata, buildTaskMetadata } from "@/lib/seo";
 import { fetchTaskPostBySlug, fetchTaskPosts } from "@/lib/task-data";
 import { SITE_CONFIG } from "@/lib/site-config";
+import { Globe, BadgeCheck } from "lucide-react";
+import { ProfileActions } from "./profile-actions";
 
 export const revalidate = 3;
 
@@ -72,15 +74,24 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
     (content.companyName as string | undefined) ||
     (content.name as string | undefined) ||
     post.title;
+  const username = content.username as string | undefined || post.slug;
   const website = content.website as string | undefined;
   const domain = website ? website.replace(/^https?:\/\//, "").replace(/\/.*$/, "") : undefined;
   const description =
     (content.description as string | undefined) ||
+    (content.bio as string | undefined) ||
     post.summary ||
     "Profile details will appear here once available.";
   const descriptionHtml = formatRichHtml(description);
+  
+  // Stats from content or defaults
+  const followers = (content.followers as number | undefined) || 0;
+  const following = (content.following as number | undefined) || 0;
+  const isVerified = (content.isVerified as boolean | undefined) || false;
+  
   const suggestedArticles = await fetchTaskPosts("article", 6);
   const baseUrl = SITE_CONFIG.baseUrl.replace(/\/$/, "");
+  const profileUrl = `${baseUrl}/profile/${post.slug}`;
   const breadcrumbData = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -111,37 +122,82 @@ export default async function ProfileDetailPage({ params }: { params: Promise<{ 
       <NavbarShell />
       <main className="mx-auto w-full max-w-6xl px-4 pb-16 pt-10 sm:px-6 lg:px-8">
         <SchemaJsonLd data={breadcrumbData} />
-        <section className="rounded-3xl border border-zinc-200 bg-white p-8 text-zinc-900 shadow-sm md:p-12">
-          <div className="grid gap-8 md:grid-cols-[200px_1fr] md:items-start">
-            <div className="flex justify-center md:justify-start">
-              <div className="relative h-36 w-36 overflow-hidden rounded-full border border-border/70 bg-muted">
+        
+        {/* Pinterest-style Profile Card */}
+        <section className="rounded-3xl border border-zinc-200 bg-white p-6 text-zinc-900 shadow-sm sm:p-8 md:p-10">
+          <div className="flex flex-col gap-6 md:flex-row md:items-start md:gap-8">
+            {/* Logo/Avatar - Left side */}
+            <div className="flex-shrink-0">
+              <div className="relative h-28 w-28 overflow-hidden rounded-full border-2 border-zinc-100 bg-zinc-50 shadow-sm sm:h-32 sm:w-32 md:h-36 md:w-36">
                 {logoUrl ? (
-                  <ContentImage src={logoUrl} alt={post.title} fill className="object-cover" sizes="144px" intrinsicWidth={144} intrinsicHeight={144} />
+                  <ContentImage 
+                    src={logoUrl} 
+                    alt={post.title} 
+                    fill 
+                    className="object-cover" 
+                    sizes="144px" 
+                    intrinsicWidth={144} 
+                    intrinsicHeight={144} 
+                  />
                 ) : (
-                  <div className="flex h-full w-full items-center justify-center text-3xl font-semibold text-muted-foreground">
+                  <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-[#BFFF00] to-lime-500 text-3xl font-bold text-black sm:text-4xl">
                     {post.title.slice(0, 1).toUpperCase()}
                   </div>
                 )}
               </div>
             </div>
-            <div>
-              <h1 className="text-3xl font-bold text-zinc-900 sm:text-4xl">{brandName}</h1>
-              {domain ? (
-                <p className="mt-1 text-sm font-medium text-zinc-600">{domain}</p>
-              ) : null}
+            
+            {/* Content - Right side */}
+            <div className="flex-1 min-w-0">
+              {/* Header: Name and Verified Badge */}
+              <div className="flex items-start gap-2">
+                <h1 className="text-2xl font-bold text-zinc-900 sm:text-3xl md:text-4xl">{brandName}</h1>
+                {isVerified && (
+                  <BadgeCheck className="mt-1 h-5 w-5 flex-shrink-0 text-[#BFFF00] sm:h-6 sm:w-6" />
+                )}
+              </div>
+              
+              {/* Username */}
+              <p className="mt-1 text-sm font-medium text-zinc-500">@{username}</p>
+              
+              {/* Stats Row */}
+              <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+                <span className="font-semibold text-zinc-900">
+                  {followers.toLocaleString()}
+                  <span className="ml-1 font-normal text-zinc-500">followers</span>
+                </span>
+                <span className="text-zinc-300">·</span>
+                <span className="font-semibold text-zinc-900">
+                  {following.toLocaleString()}
+                  <span className="ml-1 font-normal text-zinc-500">following</span>
+                </span>
+              </div>
+              
+              {/* Description/Bio */}
               <article
-                className="article-content prose prose-slate mt-6 max-w-2xl text-base leading-relaxed text-zinc-700 prose-p:my-4 prose-a:text-lime-600 prose-a:underline prose-strong:font-semibold"
+                className="article-content prose prose-slate mt-4 max-w-2xl text-sm leading-relaxed text-zinc-700 prose-p:my-2 prose-a:text-lime-600 prose-a:underline prose-strong:font-semibold sm:text-base sm:prose-p:my-3"
                 dangerouslySetInnerHTML={{ __html: descriptionHtml }}
               />
-              {website ? (
-                <div className="mt-8">
-                  <Button asChild size="lg" className="px-7 text-base">
-                    <Link href={website} target="_blank" rel="noopener noreferrer">
-                      Visit Official Site
-                    </Link>
-                  </Button>
+              
+              {/* Website Link */}
+              {domain && (
+                <div className="mt-4 flex items-center gap-2 text-sm">
+                  <Globe className="h-4 w-4 text-zinc-500" />
+                  <Link 
+                    href={website || `#`} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="font-semibold text-zinc-900 hover:text-[#BFFF00] hover:underline"
+                  >
+                    {domain}
+                  </Link>
                 </div>
-              ) : null}
+              )}
+              
+              {/* Follow and Share Buttons */}
+              <div className="mt-6">
+                <ProfileActions profileUrl={profileUrl} />
+              </div>
             </div>
           </div>
         </section>

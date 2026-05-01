@@ -1,6 +1,6 @@
-# SBM Profile (Alwadidates)
+# Alwadidates
 
-Next.js site for **SBM Profile**—public profiles, marketing pages, and local sign-in—styled with a black / white / lime (`#BFFF00`) theme.
+Next.js site for **Alwadidates**—public profiles, marketing pages, and local sign-in—styled with a black / white / lime (`#BFFF00`) theme.
 
 ## Scripts
 

@@ -20,7 +20,7 @@ export function RegisterPageOverride() {
       <main className="mx-auto max-w-7xl px-4 py-12 sm:px-6 sm:py-16 lg:px-8">
         <div className="mb-10 text-center sm:mb-12">
           <SbmBrandLogo className="justify-center text-white" size="xl" />
-          <h1 className="mt-6 text-3xl font-bold tracking-[-0.04em] sm:text-4xl md:text-5xl">Create your SBM Profile</h1>
+          <h1 className="mt-6 text-3xl font-bold tracking-[-0.04em] sm:text-4xl md:text-5xl">Create your Alwadidates Profile</h1>
           <p className="mx-auto mt-4 max-w-2xl text-zinc-400 sm:text-lg">
             Join in minutes. You will be signed in automatically with your data saved locally in this browser—ready to
             open profile setup and your dashboard.

@@ -54,7 +54,7 @@ export function SbmProfileLanding() {
             </Link>
             <h1 className="mt-8 text-4xl font-bold leading-[1.05] tracking-[-0.04em] sm:text-5xl md:text-6xl lg:text-7xl">
               <span className="block">Shaping the future</span>
-              <span className="block text-zinc-100">of your professional SBM profile.</span>
+              <span className="block text-zinc-100">of your professional Alwadidates profile.</span>
             </h1>
             <p className="mt-6 text-base leading-relaxed text-zinc-400 sm:text-lg">
               One place to build a credible profile, grow your network, and present your brand with the clarity
@@ -87,7 +87,7 @@ export function SbmProfileLanding() {
                   <div className="flex items-center gap-3">
                     <div className="h-12 w-12 rounded-full bg-gradient-to-br from-[#BFFF00] to-lime-600" />
                     <div>
-                      <p className="text-sm font-semibold">Your SBM profile</p>
+                      <p className="text-sm font-semibold">Your Alwadidates profile</p>
                       <p className="text-xs text-zinc-500">Public · Verified</p>
                     </div>
                   </div>
@@ -103,7 +103,7 @@ export function SbmProfileLanding() {
               </div>
             </div>
             <div className="order-1 space-y-4 text-center lg:order-2 lg:text-left">
-              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">Why SBM Profile</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">Why Alwadidates</p>
               <h2 className="text-2xl font-bold tracking-[-0.03em] sm:text-3xl">Built for people who outgrow a basic link-in-bio.</h2>
               <p className="text-sm leading-7 text-zinc-400">
                 Structured fields, a polished public page, and analytics that show who engages—so you can invest time
@@ -125,7 +125,7 @@ export function SbmProfileLanding() {
             to how you show up online.
           </h2>
           <p className="mx-auto mt-5 max-w-2xl text-center text-zinc-600">
-            SBM Profile turns scattered bios and files into a single, credible presence you control—tuned for trust,
+            Alwadidates turns scattered bios and files into a single, credible presence you control—tuned for trust,
             discovery, and long-term relationship building.
           </p>
 

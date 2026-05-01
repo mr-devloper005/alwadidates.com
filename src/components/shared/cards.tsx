@@ -13,7 +13,9 @@ import {
   Star,
   Bookmark,
   BadgeCheck,
-  Tag
+  Tag,
+  Share2,
+  Check
 } from 'lucide-react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
@@ -290,8 +292,30 @@ export function ClassifiedAdCard({ ad }: { ad: ClassifiedAd }) {
   )
 }
 
-// Profile Card
+// Profile Card - Pinterest-style layout
 export function ProfileCard({ user, compact = false }: { user: User; compact?: boolean }) {
+  const [copied, setCopied] = useState(false);
+  const profileUrl = typeof window !== 'undefined' ? `${window.location.origin}/profile/${user.id}` : `/profile/${user.id}`;
+
+  const handleShare = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    try {
+      await navigator.clipboard.writeText(profileUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      const textArea = document.createElement("textarea");
+      textArea.value = profileUrl;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand("copy");
+      document.body.removeChild(textArea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
   return (
     <motion.div
       whileHover={{ y: -4 }}
@@ -299,29 +323,85 @@ export function ProfileCard({ user, compact = false }: { user: User; compact?: b
     >
       <Link href={`/profile/${user.id}`}>
         <Card className="group overflow-hidden border-border bg-card transition-all hover:border-muted-foreground/20">
-          <CardContent className={cn('flex items-center gap-4', compact ? 'p-3' : 'p-5')}>
-            <Avatar className={cn(compact ? 'h-10 w-10' : 'h-14 w-14')}>
-              <AvatarImage src={user.avatar} alt={user.name} />
-              <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
-            </Avatar>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2">
-                <h3 className="truncate font-semibold text-foreground">{user.name}</h3>
-                {user.isVerified && <BadgeCheck className="h-4 w-4 flex-shrink-0 text-accent" />}
-              </div>
-              {!compact && (
-                <p className="line-clamp-2 text-sm text-muted-foreground">{user.bio}</p>
-              )}
-              <div className="mt-1 flex items-center gap-3 text-xs text-muted-foreground">
-                <span>{user.followers.toLocaleString()} followers</span>
-                {user.location && (
-                  <span className="flex items-center gap-1">
-                    <MapPin className="h-3 w-3" />
-                    {user.location}
-                  </span>
-                )}
+          <CardContent className={cn('p-4', compact ? 'p-3' : 'p-5')}>
+            {/* Header: Avatar + Name Row */}
+            <div className="flex items-start gap-3">
+              <Avatar className={cn('flex-shrink-0 border-2 border-zinc-100', compact ? 'h-12 w-12' : 'h-16 w-16')}>
+                <AvatarImage src={user.avatar} alt={user.name} />
+                <AvatarFallback className="bg-gradient-to-br from-[#BFFF00] to-lime-500 text-black font-bold text-lg">
+                  {user.name.charAt(0)}
+                </AvatarFallback>
+              </Avatar>
+              <div className="flex-1 min-w-0 pt-1">
+                <div className="flex items-center gap-1.5">
+                  <h3 className="truncate font-bold text-foreground">{user.name}</h3>
+                  {user.isVerified && <BadgeCheck className="h-4 w-4 flex-shrink-0 text-[#BFFF00]" />}
+                </div>
+                <p className="text-xs text-muted-foreground">@{user.id}</p>
               </div>
             </div>
+
+            {/* Stats Row */}
+            {!compact && (
+              <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+                <span className="font-semibold text-foreground">
+                  {user.followers.toLocaleString()}
+                  <span className="ml-1 font-normal text-muted-foreground">followers</span>
+                </span>
+                <span className="text-muted-foreground">·</span>
+                <span className="font-semibold text-foreground">
+                  {user.following.toLocaleString()}
+                  <span className="ml-1 font-normal text-muted-foreground">following</span>
+                </span>
+              </div>
+            )}
+
+            {/* Bio */}
+            {!compact && (
+              <p className="mt-2 line-clamp-2 text-sm text-muted-foreground leading-relaxed">
+                {user.bio}
+              </p>
+            )}
+
+            {/* Location */}
+            {user.location && (
+              <div className="mt-2 flex items-center gap-1 text-xs text-muted-foreground">
+                <MapPin className="h-3 w-3" />
+                {user.location}
+              </div>
+            )}
+
+            {/* Follow and Share Buttons */}
+            {!compact && (
+              <div className="mt-4 flex items-center gap-2">
+                <Link href="/login" onClick={(e) => e.stopPropagation()}>
+                  <Button
+                    size="sm"
+                    className="rounded-full bg-[#BFFF00] px-5 text-xs font-semibold text-black hover:bg-[#d4ff4d]"
+                  >
+                    Follow
+                  </Button>
+                </Link>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={handleShare}
+                  className="rounded-full border-zinc-300 px-4 text-xs font-semibold text-foreground hover:bg-zinc-100"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="mr-1.5 h-3 w-3 text-green-600" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Share2 className="mr-1.5 h-3 w-3" />
+                      Share
+                    </>
+                  )}
+                </Button>
+              </div>
+            )}
           </CardContent>
         </Card>
       </Link>

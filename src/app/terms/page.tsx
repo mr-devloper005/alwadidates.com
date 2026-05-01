@@ -13,22 +13,22 @@ export async function generateMetadata() {
   return buildPageMetadata({
     path: '/terms',
     title: 'Terms of Service',
-    description: `Rules and conditions for using ${SITE_CONFIG.name} and SBM Profile.`,
+    description: `Rules and conditions for using ${SITE_CONFIG.name} and Alwadidates.`,
   })
 }
 
 export default function TermsPage() {
   return (
     <SbmLegalPageShell
-      label="SBM Profile"
+      label="Alwadidates"
       title="Terms of Service"
-      description={`These terms govern your use of ${SITE_CONFIG.name} and the SBM Profile product. By accessing the site or creating a profile, you agree to the rules below, together with our Privacy Policy.`}
+      description={`These terms govern your use of ${SITE_CONFIG.name} and the Alwadidates product. By accessing the site or creating a profile, you agree to the rules below, together with our Privacy Policy.`}
       lastUpdated="April 22, 2026"
     >
       <section className={legalSectionClass}>
         <h2 className={legalH2}>1. The service</h2>
         <p className={`mt-4 ${legalP}`}>
-          SBM Profile provides tools to create, publish, and manage a professional public profile, along with related
+          Alwadidates provides tools to create, publish, and manage a professional public profile, along with related
           features the site may offer from time to time. We can change, add, or remove features for maintenance,
           security, or product reasons; if a change is material, we will provide notice in a reasonable way.
         </p>
