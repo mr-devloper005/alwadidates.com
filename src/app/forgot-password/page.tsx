@@ -47,7 +47,7 @@ export default function ForgotPasswordPage() {
             <>
               <h1 className="text-3xl font-bold tracking-[-0.04em] sm:text-4xl">Reset your password</h1>
               <p className="mt-2 text-sm leading-7 text-zinc-400">
-                Enter the email you use for SBM Profile. If it matches an account, we will send a reset link (demo: no
+                Enter the email you use for Alwadidates. If it matches an account, we will send a reset link (demo: no
                 real email is sent from this build).
               </p>
 

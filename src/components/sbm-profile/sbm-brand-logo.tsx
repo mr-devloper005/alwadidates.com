@@ -33,7 +33,7 @@ export function SbmBrandLogo({ className, showWordmark = true, size = 'md' }: Sb
         height={96}
         className={cn('shrink-0 object-contain', sizeMap[size])}
       />
-      {showWordmark ? <span className={cn('font-bold tracking-[-0.04em] text-inherit', textMap[size])}>SBM Profile</span> : null}
+      {showWordmark ? <span className={cn('font-bold tracking-[-0.04em] text-inherit', textMap[size])}>Alwadidates</span> : null}
     </div>
   )
 }

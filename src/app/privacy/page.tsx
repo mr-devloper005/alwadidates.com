@@ -14,14 +14,14 @@ export async function generateMetadata() {
   return buildPageMetadata({
     path: '/privacy',
     title: 'Privacy Policy',
-    description: 'How SBM Profile collects, uses, and protects your information.',
+    description: 'How Alwadidates collects, uses, and protects your information.',
   })
 }
 
 export default function PrivacyPage() {
   return (
     <SbmLegalPageShell
-      label="SBM Profile"
+      label="Alwadidates"
       title="Privacy Policy"
       description="We designed this platform around professional profiles, not ad targeting. This page explains what we collect, why we collect it, and the choices you have—especially when you use local sign-in on this device."
       lastUpdated="April 22, 2026"
@@ -29,7 +29,7 @@ export default function PrivacyPage() {
       <section className={legalSectionClass}>
         <h2 className={legalH2}>1. What this policy covers</h2>
         <p className={`mt-4 ${legalP}`}>
-          This policy applies to the {SITE_CONFIG.name} website and the SBM Profile product experience, including
+          This policy applies to the {SITE_CONFIG.name} website and the Alwadidates product experience, including
           public profile pages, account features you access after sign-in, and support or contact forms you use on the
           site. It does not cover third-party sites you reach by following links.
         </p>

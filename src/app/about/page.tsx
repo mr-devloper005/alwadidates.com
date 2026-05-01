@@ -26,7 +26,7 @@ const principles = [
   },
   {
     title: "Room to grow",
-    body: "As your role or business evolves, your SBM Profile can stretch with you: new proof points, links, and story—same URL.",
+    body: "As your role or business evolves, your Alwadidates profile can stretch with you: new proof points, links, and story—same URL.",
     icon: Compass,
   },
 ]
@@ -44,12 +44,12 @@ export default function AboutPage() {
           <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-24">
             <div className="max-w-3xl">
               <SbmBrandLogo className="text-white" size="lg" />
-              <p className="mt-8 text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">About SBM Profile</p>
+              <p className="mt-8 text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">About Alwadidates</p>
               <h1 className="mt-4 text-4xl font-bold leading-[1.08] tracking-[-0.04em] sm:text-5xl md:text-6xl">
                 A public profile you are proud to put in a signature.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-400">
-                {SITE_CONFIG.name} is focused on the SBM Profile experience: one credible surface for people and teams
+                {SITE_CONFIG.name} is focused on the Alwadidates experience: one credible surface for people and teams
                 who need to look sharp in email, chat, and the first page someone opens after a referral.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
@@ -90,7 +90,7 @@ export default function AboutPage() {
             </span>
             <h2 className="mt-4 text-3xl font-bold tracking-[-0.03em] sm:text-4xl">What we optimize for</h2>
             <p className="mt-3 text-sm leading-7 text-zinc-600">
-              SBM Profile is not a business directory, not a social feed, and not a file dump. It is a deliberate answer
+              Alwadidates is not a business directory, not a social feed, and not a file dump. It is a deliberate answer
               to: “What should people see first when they look you up?”
             </p>
           </div>

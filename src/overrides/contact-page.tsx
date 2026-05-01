@@ -11,7 +11,7 @@ const lanes = [
   {
     icon: Rocket,
     title: 'Profile & onboarding',
-    body: 'Questions about first-time setup, fields, and how your public SBM profile appears to visitors.',
+    body: 'Questions about first-time setup, fields, and how your public Alwadidates profile appears to visitors.',
   },
   {
     icon: MessageSquare,
@@ -53,7 +53,7 @@ export function ContactPageOverride() {
             <div>
               <h2 className="text-2xl font-bold tracking-[-0.03em] sm:text-3xl">Ways we can help</h2>
               <p className="mt-3 text-sm leading-7 text-zinc-600">
-                SBM Profile is built for a single, credible public surface. Pick the lane that is closest, then add
+                Alwadidates is built for a single, credible public surface. Pick the lane that is closest, then add
                 context in the form—no ticket roulette.
               </p>
               <ul className="mt-8 space-y-4">
