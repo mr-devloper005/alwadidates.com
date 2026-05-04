@@ -3,20 +3,18 @@ import { ArrowRight, Compass, Shield, Sparkles, Target } from "lucide-react"
 import { NavbarShell } from "@/components/shared/navbar-shell"
 import { Footer } from "@/components/shared/footer"
 import { SbmBrandLogo } from "@/components/sbm-profile/sbm-brand-logo"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { mockTeamMembers } from "@/data/mock-data"
 import { SITE_CONFIG } from "@/lib/site-config"
 
 const stats = [
-  { label: "Profile projects shipped", value: "2.4k+" },
-  { label: "Return visits to public pages", value: "38%" },
-  { label: "Avg. time to go live", value: "< 1 day" },
+  { label: "Resources shared", value: "10k+" },
+  { label: "Pages published", value: "2.4k+" },
+  { label: "Monthly visitors", value: "50k+" },
 ]
 
 const principles = [
   {
     title: "Clarity over noise",
-    body: "A profile should answer who you are, what you do, and how to take the next step—without burying that under feeds or ads.",
+    body: "Your page should answer who you are, what you do, and how to take the next step—without burying that under feeds or ads.",
     icon: Target,
   },
   {
@@ -26,7 +24,7 @@ const principles = [
   },
   {
     title: "Room to grow",
-    body: "As your role or business evolves, your Alwadidates profile can stretch with you: new proof points, links, and story—same URL.",
+    body: "As your role or business evolves, your presence can stretch with you: new resources, proof points, links, and story—same URL.",
     icon: Compass,
   },
 ]
@@ -46,18 +44,18 @@ export default function AboutPage() {
               <SbmBrandLogo className="text-white" size="lg" />
               <p className="mt-8 text-xs font-semibold uppercase tracking-[0.24em] text-zinc-500">About Alwadidates</p>
               <h1 className="mt-4 text-4xl font-bold leading-[1.08] tracking-[-0.04em] sm:text-5xl md:text-6xl">
-                A public profile you are proud to put in a signature.
+                Clean discovery. Structured publishing.
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-zinc-400">
-                {SITE_CONFIG.name} is focused on the Alwadidates experience: one credible surface for people and teams
-                who need to look sharp in email, chat, and the first page someone opens after a referral.
+                {SITE_CONFIG.name} is built for professionals who need a credible surface to share resources 
+                and present their work—without the noise of traditional social feeds.
               </p>
               <div className="mt-10 flex flex-wrap gap-4">
                 <Link
-                  href="/create/profile"
+                  href="/profile"
                   className="inline-flex items-center gap-2 rounded-full bg-[#BFFF00] px-6 py-3 text-sm font-semibold text-black transition hover:bg-[#d4ff4d]"
                 >
-                  Open profile setup
+                  Explore
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
@@ -90,8 +88,8 @@ export default function AboutPage() {
             </span>
             <h2 className="mt-4 text-3xl font-bold tracking-[-0.03em] sm:text-4xl">What we optimize for</h2>
             <p className="mt-3 text-sm leading-7 text-zinc-600">
-              Alwadidates is not a business directory, not a social feed, and not a file dump. It is a deliberate answer
-              to: “What should people see first when they look you up?”
+              {SITE_CONFIG.name} is not a business directory, not a social feed, and not a file dump. It is a deliberate answer
+              to: “What should people see first when they look you up?” and “What resources are worth sharing?”
             </p>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -105,36 +103,6 @@ export default function AboutPage() {
                 <p className="mt-2 text-sm leading-7 text-zinc-600">{p.body}</p>
               </div>
             ))}
-          </div>
-        </section>
-
-        <section className="bg-black py-16 text-white sm:py-20">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <h2 className="text-2xl font-bold tracking-[-0.03em] sm:text-3xl">People behind the work</h2>
-            <p className="mt-2 max-w-2xl text-sm leading-7 text-zinc-400">
-              A small, product-minded group helping professionals ship profiles that read as real—not generic.
-            </p>
-            <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {mockTeamMembers.map((member) => (
-                <div
-                  key={member.id}
-                  className="rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:border-white/20"
-                >
-                  <div className="flex items-center gap-3">
-                    <Avatar className="h-12 w-12 border border-white/20">
-                      <AvatarImage src={member.avatar} alt={member.name} />
-                      <AvatarFallback>{member.name.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <p className="font-semibold">{member.name}</p>
-                      <p className="text-xs text-zinc-500">{member.role}</p>
-                    </div>
-                  </div>
-                  <p className="mt-4 text-sm leading-6 text-zinc-400">{member.bio}</p>
-                  <p className="mt-3 text-xs text-zinc-500">{member.location}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
       </main>

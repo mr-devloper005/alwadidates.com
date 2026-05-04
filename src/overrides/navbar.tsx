@@ -14,7 +14,6 @@ export const NAVBAR_OVERRIDE_ENABLED = true
 const mainLinks = [
   { name: 'Home', href: '/' },
   { name: 'About Us', href: '/about' },
-  { name: 'Profile Setup', href: '/create/profile' },
   { name: 'Our Work', href: '/profile' },
 ] as const
 

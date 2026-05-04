@@ -7,8 +7,8 @@ export const FOOTER_OVERRIDE_ENABLED = true
 const footerNav = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
-  { name: 'Profile setup', href: '/create/profile' },
-  { name: 'Public profiles', href: '/profile' },
+  { name: 'Public Profiles', href: '/profile' },
+  { name: 'Social Bookmarking', href: '/sbm' },
   { name: 'Contact', href: '/contact' },
   { name: 'Help', href: '/help' },
   { name: 'Privacy', href: '/privacy' },
