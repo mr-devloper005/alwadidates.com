@@ -186,19 +186,9 @@ export function SbmProfileLanding() {
       {/* Showcase cards */}
       <section className="bg-zinc-50 text-black">
         <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
-          <div className="mb-10 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-            <div>
-              <span className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">Showcase</span>
-              <h2 className="mt-2 text-3xl font-bold tracking-[-0.03em]">Profile experiences that read as serious.</h2>
-            </div>
-            <Link
-              href="/profile"
-              className="text-sm font-semibold text-zinc-900 underline-offset-4 hover:underline"
-              style={{ color: '#0a0a0a' }}
-            >
-              Browse public profiles
-              <ArrowRight className="ml-1 inline h-4 w-4" />
-            </Link>
+          <div className="mb-10">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500">Showcase</span>
+            <h2 className="mt-2 text-3xl font-bold tracking-[-0.03em]">Experiences that read as serious.</h2>
           </div>
           <div className="grid gap-6 md:grid-cols-2">
             {[
